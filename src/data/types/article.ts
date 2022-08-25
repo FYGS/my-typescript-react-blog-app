@@ -3,3 +3,8 @@ export interface Article {
   title: string;
   content: string[];
 };
+
+export interface Comment {
+  username: string;
+  text: string;
+};
