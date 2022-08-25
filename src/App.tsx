@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import { NavBar } from './components';
+import {
+	AboutPage,
+	ArticlePage,
+	ArticlesListPage,
+	HomePage,
+	NotFoundPage,
+} from './pages';
+
+function App(): JSX.Element {
+	return (
+		<BrowserRouter>
+			<div className="App">
+				<NavBar></NavBar>
+				<div id="page-body">
+					<Routes>
+						<Route path="/" element={<HomePage />}></Route>
+						<Route path="/about" element={<AboutPage />}></Route>
+						<Route path="/articles" element={<ArticlesListPage />}></Route>
+						<Route path="/article/:name" element={<ArticlePage />}></Route>
+						<Route path="*" element={<NotFoundPage />}></Route>
+					</Routes>
+				</div>
+			</div>
+		</BrowserRouter>
+	);
 }
 
 export default App;
